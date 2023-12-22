@@ -62,7 +62,7 @@ footer {
   font-size: 0.6em;
 }
 
-.col img { /* FIX SELECTOR */ 
+.col img { 
   transition: transform 0.2s;
 }
 

@@ -1,7 +1,4 @@
-//stessa cosa della nav, questo va nel render e sostituito in react-bootstrap, occhio all'altro html sto footer sta dentro la main che contiene anche
-//tutte le schede dei film
 import React from 'react';
-/* import Container from 'react-bootstrap/Container'; */
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
