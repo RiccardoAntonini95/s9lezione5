@@ -9,9 +9,9 @@ class SingleComment extends React.Component{
    render(){
     return(
         <ListGroup.Item variant="light" key={this.props.arrCommenti._id}>
-            Comment: {this.props.arrCommenti.comment}
-            Rate: {this.props.arrCommenti.rate} stars
-            Author: {this.props.arrCommenti.author}
+            <p>Comment: {this.props.arrCommenti.comment}</p>
+            <p>Rate: {this.props.arrCommenti.rate} stars</p>
+            <p>Author: {this.props.arrCommenti.author}</p>
         </ListGroup.Item>
     )
    }
