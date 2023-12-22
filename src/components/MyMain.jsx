@@ -3,6 +3,9 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import MyFooter from "./MyFooter";
+import Gallery1 from "./Gallery1";
+import Gallery2 from "./Gallery2";
+import Gallery3 from "./Gallery3";
 
 class MyMain extends React.Component{
   render(){
@@ -36,9 +39,9 @@ class MyMain extends React.Component{
             <i className="fa fa-th icons"></i>
           </div>
         </div>
-        {/* galleria1 */}
-        {/* galleria2 */}
-        {/* galleria3 */}
+        <Gallery1 />
+        <Gallery2 />
+        <Gallery3 />
         <MyFooter />
       </Container>
     );
