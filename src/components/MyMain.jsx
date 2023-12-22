@@ -1,4 +1,3 @@
-//qua va importato il footer perchè sta all'interno della main
 import React from "react";
 import { Container } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';

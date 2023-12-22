@@ -1,32 +1,42 @@
-//va dentro main 
 import React from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 class Gallery3 extends React.Component {
+    state = {
+        filmArr : [] 
+    }
+    getFilms = async () => {
+        try{
+            const response = await fetch("http://www.omdbapi.com/?apikey=4282f56b&s=Star%20Wars")
+            if(response.ok){
+                const data = await response.json()
+                this.setState({filmArr: data.Search})
+                console.log("sono in get films", data)
+                console.log("sono data.search", data.Search)
+                console.log("questo è state", this.state)
+            } else {
+                console.log("Errore del fetch")
+            }
+        } catch(err){
+            console.log("Errore:", err)
+        }
+    }
+
+    componentDidMount(){
+        this.getFilms()
+    }
+
+
   render() {
     return (
       <div>  
-        <h4>TERZA GALLERIA</h4>
+        <h4>STAR WARS SAGA</h4>
         <Row xs={1} sm={2} lg={4} xl={6} className="mb-4 no-gutters text-center">
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/1.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/2.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/3.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/4.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/5.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/6.png" alt="movie picture" />
-          </Col>
+            {this.state.filmArr.map(movie =>
+                <Col key={movie.imdbID} className="mb-2 px-1">
+                    <img className="img-fluid" src={movie.Poster} alt="movie picture" />
+                </Col>                
+            )}
         </Row>
       </div>
     );

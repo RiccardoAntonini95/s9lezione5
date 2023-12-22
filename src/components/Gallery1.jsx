@@ -1,32 +1,42 @@
-//va dentro main 
 import React from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 class Gallery1 extends React.Component {
-  render() {
+    state = {
+        filmArr : [] 
+    }
+    getFilms = async () => {
+        try{
+            const response = await fetch("http://www.omdbapi.com/?apikey=4282f56b&s=Harry%20Potter")
+            if(response.ok){
+                const data = await response.json()
+                this.setState({filmArr: data.Search})
+                console.log("sono in get films", data)
+                console.log("sono data.search", data.Search)
+                console.log("questo è state", this.state)
+            } else {
+                console.log("Errore del fetch")
+            }
+        } catch(err){
+            console.log("Errore:", err)
+        }
+    }
+
+    componentDidMount(){
+        this.getFilms()
+    }
+
+
+  render() { //poi sostituisci le immagini qua dentro, usando lo state tipo this.state.filmArr
     return (
       <div>  
-        <h4>PRIMA GALLERIA</h4>
+        <h4>HARRY POTTER SAGA</h4>
         <Row xs={1} sm={2} lg={4} xl={6} className="mb-4 no-gutters text-center">
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/1.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/2.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/3.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/4.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/5.png" alt="movie picture" />
-          </Col>
-          <Col className="mb-2 px-1">
-            <img className="img-fluid" src="assets/6.png" alt="movie picture" />
-          </Col>
+            {this.state.filmArr.map(movie =>
+                <Col key={movie.imdbID} className="mb-2 px-1">
+                    <img className="img-fluid" src={movie.Poster} alt="movie picture" />
+                </Col>                
+            )}
         </Row>
       </div>
     );
@@ -34,31 +44,3 @@ class Gallery1 extends React.Component {
 }
 
 export default Gallery1
-
-
-
-
-
-
-
-{/* <h4>PRIMA GALLERIA</h4>
-<div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4 no-gutters text-center">
-  <div className="col mb-2 px-1">
-    <img className="img-fluid" src="assets/1.png" alt="movie picture" />
-  </div>
-  <div className="col mb-2 px-1">
-    <img className="img-fluid" src="assets/2.png" alt="movie picture" />
-  </div>
-  <div className="col mb-2 px-1">
-    <img className="img-fluid" src="assets/3.png" alt="movie picture" />
-  </div>
-  <div className="col mb-2 px-1">
-    <img className="img-fluid" src="assets/4.png" alt="movie picture" />
-  </div>
-  <div className="col mb-2 px-1">
-    <img className="img-fluid" src="assets/5.png" alt="movie picture" />
-  </div>
-  <div className="col mb-2 px-1">
-    <img className="img-fluid" src="assets/6.png" alt="movie picture" />
-  </div>
-</div> */}
