@@ -1,5 +1,6 @@
 // fix immagine logo
 import React from "react";
+import logo from "../assets/logo.png"
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Button } from "react-bootstrap";
@@ -11,7 +12,7 @@ class MyNavBar extends React.Component{
       className="navbar navbar-expand-lg navbar-dark"
     >
       <Navbar.Brand href="#">
-        <img src="../assets/logo.png" id="netflix-logo" /* style={{"width: 100px; height: 55px"}} */ />
+        <img src={logo} id="netflix-logo" />
       </Navbar.Brand>
       <Button
         className="navbar-toggler"
